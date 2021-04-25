@@ -1,0 +1,9 @@
+---
+
+- hosts: 192.168.79.128 
+  vars:
+    ansible_port: "{{ ssh_port | default('22') }}"
+  remote_user: root
+  become: yes
+  roles:
+    - geerlingguy.docker

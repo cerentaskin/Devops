@@ -1,0 +1,2 @@
+[bootcamp]
+192.168.79.128 ansible_ssh_user=root ansible_ssh_pass=root
