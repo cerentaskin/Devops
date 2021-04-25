@@ -58,6 +58,7 @@ sr0 11:0 1 973M 0 rom
 ```
 
 #### 1.4
+/opt altında bootcamp dizini `mkdir` komutu ile oluşturulduktan sonra içinde bootcamp.txt dosyası oluşturulup vim ile düzenlenmiştir. 
  ```
 sudo touch bootcamp.txt
 sudo vim bootcamp.txt
