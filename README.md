@@ -86,3 +86,10 @@ cat /bootcamp/bootcamp.txt
 Merhaba Trendyol
 ```
 
+##Case 2 
+Kullanılan makine özellikleri şu şekildedir: 
+  Rol           |  OS    | IP             | 
+  :-----------: | -----: | -----:         |
+  Host          | centos | 192.168.79.128 |
+  Ansible       | centos | 192.168.79.129 |
+
