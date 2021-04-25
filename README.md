@@ -1,2 +1,2 @@
-# Devops
+# DevOps
 Bootcamp Case 1
