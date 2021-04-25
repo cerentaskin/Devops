@@ -162,6 +162,21 @@ ansible-galaxy install geerlingguy.nginx
 ansible-playbook nginx.yml --syntax –check 
 ansible-playbook nginx.yml 
 ```
+Nginx'in konf dosyasını düzenleyeceğiz. 
+
+`sudo vim /etc/nginx/conf.d/nginx.conf`
+
+```
+server {
+    listen      80;
+
+    location / {
+        proxy_pass http://192.168.79.128:8080;
+    }
+
+}
+```
+
 Nginx'in durumunu kontrol edelim. 
 
 `systemctl status nginx`
