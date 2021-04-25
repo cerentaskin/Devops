@@ -40,12 +40,12 @@ sr0 11:0 1 973M 0 rom
 
  `sudo mkfs.ext4 /dev/sdb` komutuyla disk formatlanır. Sonrasında /bootcamp dizini oluşturulur ve disk buraya bağlanır. 
 
-
+ ```
  `Sudo mkdir /bootcamp  `
 
  `sudo mount /dev/sdb /bootcamp `
  ```
-
+ ```
 [ceren.taskin@localhost ~]$ sudo lsblk
 NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
 sda 8:0 0 20G 0 disk
@@ -58,10 +58,12 @@ sr0 11:0 1 973M 0 rom
 ```
 
 #### 1.4
+ ```
 `sudo touch bootcamp.txt`
 `sudo vim bootcamp.txt`
 `cat bootcamp.txt`
 ```
+ ```
 
 [ceren.taskin@localhost bootcamp]$ sudo touch bootcamp.txt
 [sudo] password for ceren.taskin:
@@ -72,8 +74,10 @@ Merhaba Trendyol
 
 
 #### 1.5 
+ ```
 `sudo mv $(sudo find / -iname bootcamp.txt -type f) /bootcamp`
 `cat /bootcamp/bootcamp.txt`
+ ```
 ```
 
 [ceren.taskin@localhost bootcamp]$ sudo mv $(sudo find / -iname bootcamp.txt -type f) /bootcamp
