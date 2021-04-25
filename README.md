@@ -78,8 +78,6 @@ Merhaba Trendyol
 
 [ceren.taskin@localhost bootcamp]$ sudo mv $(sudo find / -iname bootcamp.txt -type f) /bootcamp
 [ceren.taskin@localhost bootcamp]$ cat /bootcamp/bootcamp.txt
-```
-
 Merhaba Trendyol
-
+```
 
