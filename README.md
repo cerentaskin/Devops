@@ -15,11 +15,16 @@ Kullanıcımızı yetkili gruba atayabilmek için:
 Buradaki Wheel grubundaysanız sudo komutuyla işlem yapabilirsiniz. Sudo çalıştırıldığında, çalıştıran kişi anlık olarak uid’si 0 olan kullanıcı olur. (özel gruba dahil) 
 /etc/shadow kullanıcı bilgilerinin tutulduğu yerdir. Aşağıdaki komutun çıktısında kullanıcı ile ilgili bilgilere ulaşılabilir. Burada kullanıcının parolası “şifrelenmiş” bir şekilde tutulmaktadır. Aşağıdaki satırdan şifrelenme metodu, parolanın son değiştirilme tarihi (1 Ocak 1970’den itibaren geçen gün sayısından hesaplanır) vb. bilgilere ulaşabiliriz. 
 `cat /etc/shadow | grep ceren.taskin` 
+```
+
 [ceren.taskin@localhost ~]$ sudo cat /etc/shadow | grep ceren.taskin
 [sudo] password for ceren.taskin:
 ceren.taskin:$6$Tg7HO/Z4$wd4WVfB28Y3KDFC4G41Es3s8TgeDuh4xwlzXXy5l0AbKiesKVJmxif/BvCdeQXmAHNPZZI2xSKgnf.p9rALOa0:18741:0:99999:7:::
+```
+
 #### 1.3
 VMWare ayarlarından disk eklendikten sonra `lsblk` komutuyla diskin geldiği görülebilir: (sdb)
+```
 
 [ceren.taskin@localhost ~]$ sudo lsblk
 [sudo] password for ceren.taskin:
@@ -31,11 +36,16 @@ sda 8:0 0 20G 0 disk
 └─centos-swap 253:1 0 2G 0 lvm [SWAP]
 sdb 8:16 0 10G 0 disk
 sr0 11:0 1 973M 0 rom
+```
 
  `sudo mkfs.ext4 /dev/sdb` komutuyla disk formatlanır. Sonrasında /bootcamp dizini oluşturulur ve disk buraya bağlanır. 
 
-Sudo mkdir /bootcamp 
-sudo mount /dev/sdb /bootcamp
+
+ `Sudo mkdir /bootcamp  `
+
+ `sudo mount /dev/sdb /bootcamp `
+ ```
+
 [ceren.taskin@localhost ~]$ sudo lsblk
 NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
 sda 8:0 0 20G 0 disk
@@ -45,22 +55,31 @@ sda 8:0 0 20G 0 disk
 └─centos-swap 253:1 0 2G 0 lvm [SWAP]
 sdb 8:16 0 10G 0 disk /bootcamp
 sr0 11:0 1 973M 0 rom
+```
 
 #### 1.4
 `sudo touch bootcamp.txt`
 `sudo vim bootcamp.txt`
 `cat bootcamp.txt`
+```
+
 [ceren.taskin@localhost bootcamp]$ sudo touch bootcamp.txt
 [sudo] password for ceren.taskin:
 [ceren.taskin@localhost bootcamp]$ sudo vim bootcamp.txt
 [ceren.taskin@localhost bootcamp]$ cat bootcamp.txt
 Merhaba Trendyol
+```
+
 
 #### 1.5 
 `sudo mv $(sudo find / -iname bootcamp.txt -type f) /bootcamp`
 `cat /bootcamp/bootcamp.txt`
+```
+
 [ceren.taskin@localhost bootcamp]$ sudo mv $(sudo find / -iname bootcamp.txt -type f) /bootcamp
 [ceren.taskin@localhost bootcamp]$ cat /bootcamp/bootcamp.txt
+```
+
 Merhaba Trendyol
 
 
