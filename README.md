@@ -60,9 +60,9 @@ sr0 11:0 1 973M 0 rom
 #### 1.4
 /opt altında bootcamp dizini `mkdir` komutu ile oluşturulduktan sonra içinde bootcamp.txt dosyası oluşturulup vim ile düzenlenmiştir. 
  ```
-sudo touch bootcamp.txt
+sudo mkdir /opt/bootcamp
+sudo /opt/bootcamp/bootcamp.txt
 sudo vim bootcamp.txt
-cat bootcamp.txt
 ```
  ```
 
@@ -76,7 +76,7 @@ Merhaba Trendyol
 
 #### 1.5 
  ```
-sudo mv $(sudo find / -iname bootcamp.txt -type f) /bootcamp
+sudo find / -iname bootcamp.txt -type f -exec mv '{}' /bootcamp \
 cat /bootcamp/bootcamp.txt
  ```
 ```
@@ -86,7 +86,7 @@ cat /bootcamp/bootcamp.txt
 Merhaba Trendyol
 ```
 
-##Case 2 
+## Case 2 
 Kullanılan makine özellikleri şu şekildedir: 
   Rol           |  OS    | IP             | 
   :-----------: | -----: | -----:         |
