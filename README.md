@@ -92,4 +92,62 @@ Kullanılan makine özellikleri şu şekildedir:
   :-----------: | -----: | -----:         |
   Host          | centos | 192.168.79.128 |
   Ansible       | centos | 192.168.79.129 |
+```
+sudo yum install epel-release
+sudo yum install ansible
+``` 
+vim /etc/ansible/hosts dosyasına aşağıdaki satırları ekliyoruz. 
+``` 
+[bootcamp]
+192.168.79.128 ansible_ssh_user=root ansible_ssh_pass=root 
+```
+Doğrulama için ise:  
+
+`ansible --list-hosts all`
+``` 
+ [root@ansible ~]# ansible --list-hosts all
+  hosts (1):
+    ansible_host=192.168.79.128  
+``` 
+hostumuza ulaşmayı deneyelim:
+```
+[root@localhost ~]# ansible -m ping all
+192.168.79.128 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+```
+
+Docker kurulumu için adımlar: 
+`ansible-galaxy install geerlingguy.docker`
+![image](https://user-images.githubusercontent.com/33395649/115997718-e6530f00-a5ec-11eb-9c2b-183e860b4c7f.png)
+
+Syntax check kullanarak hata var mı diye kontrol ediyoruz. Bu komut, eğer playbook yazımı ise sadece ismini döndürür: `ansible-playbook sample.yml - - syntax – check `
+`ansible-playbook docker.yml --syntax –check`
+Docker kurulumu için playbook çalıştırılması: 
+`ansible-playbook docker.yml`
+Wordpress için playbook çalıştırılması: 
+`ansible-playbook main.yml` 
+Hostumuzda gerekli kontrolleri sağlayalım: 
+```
+
+[ceren.taskin@localhost ~]$ sudo docker ps
+CONTAINER ID   IMAGE       COMMAND                  CREATED        STATUS       PORTS                                   NAMES
+d48e47190bb7   mysql:5.7   "docker-entrypoint.s…"   25 hours ago   Up 2 hours   3306/tcp, 33060/tcp                     wordpress_db_1
+21c14cf45386   wordpress   "docker-entrypoint.s…"   25 hours ago   Up 2 hours   0.0.0.0:8080->80/tcp, :::8080->80/tcp   wordpress_wordpress_1
+[ceren.taskin@localhost ~]$ sudo docker image ls
+REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
+mysql        5.7       87eca374c0ed   5 days ago   447MB
+wordpress    latest    c01290f258b3   9 days ago   550MB
+
+```
+Containerların ayakta olduğunu görmekteyiz. Wordpress sayfasına erişmeye çalışalım. 
+
+http://192.168.79.128:8000  
+![image](https://user-images.githubusercontent.com/33395649/115997910-8dd04180-a5ed-11eb-8ef9-6e63dcab5f13.png)
+
+
 
