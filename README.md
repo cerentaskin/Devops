@@ -126,12 +126,17 @@ Docker kurulumu için adımlar:
 ![image](https://user-images.githubusercontent.com/33395649/115997718-e6530f00-a5ec-11eb-9c2b-183e860b4c7f.png)
 
 Syntax check kullanarak hata var mı diye kontrol ediyoruz. Bu komut, eğer playbook yazımı ise sadece ismini döndürür: `ansible-playbook sample.yml - - syntax – check `
-`ansible-playbook docker.yml --syntax –check`
+
 Docker kurulumu için playbook çalıştırılması: 
+
 `ansible-playbook docker.yml`
+
 Wordpress için playbook çalıştırılması: 
+
 `ansible-playbook main.yml` 
+
 Hostumuzda gerekli kontrolleri sağlayalım: 
+
 ```
 
 [ceren.taskin@localhost ~]$ sudo docker ps
@@ -146,8 +151,38 @@ wordpress    latest    c01290f258b3   9 days ago   550MB
 ```
 Containerların ayakta olduğunu görmekteyiz. Wordpress sayfasına erişmeye çalışalım. 
 
-http://192.168.79.128:8000  
+http://192.168.79.128:8080  
+
 ![image](https://user-images.githubusercontent.com/33395649/115997910-8dd04180-a5ed-11eb-8ef9-6e63dcab5f13.png)
 
+Nginx: 
+```
 
+ansible-galaxy install geerlingguy.nginx
+ansible-playbook nginx.yml --syntax –check 
+ansible-playbook nginx.yml 
+```
+Nginx'in durumunu kontrol edelim. 
+
+`systemctl status nginx`
+
+```
+● nginx.service - nginx - high performance web server
+   Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; vendor preset                                                                                                                                   : disabled)
+   Active: active (running) since Sun 2021-04-25 17:47:32 EEST; 6s ago
+     Docs: http://nginx.org/en/docs/
+  Process: 1891 ExecStop=/bin/sh -c /bin/kill -s TERM $(/bin/cat /var/run/nginx.                                                                                                                                   pid) (code=exited, status=0/SUCCESS)
+  Process: 3794 ExecStart=/usr/sbin/nginx -c /etc/nginx/nginx.conf (code=exited,                                                                                                                                    status=0/SUCCESS)
+ Main PID: 3795 (nginx)
+    Tasks: 2
+   Memory: 1.5M
+   CGroup: /system.slice/nginx.service
+           ├─3795 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.c...
+           └─3796 nginx: worker process
+
+Apr 25 17:47:32 localhost.localdomain systemd[1]: Starting nginx - high perfo...
+Apr 25 17:47:32 localhost.localdomain systemd[1]: Can't open PID file /var/ru...
+Apr 25 17:47:32 localhost.localdomain systemd[1]: Started nginx - high perfor...
+Hint: Some lines were ellipsized, use -l to show in full.
+```
 
