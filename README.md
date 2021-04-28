@@ -1,4 +1,4 @@
-# DevOps
+# Trendyol-Bootcamp-Devops-Case
 ## Case 1
 RedHat dağıtımlarından Centos 7 minimal iso dosyası indirilir ve sanallaştırma yazılımları üzerinden kurulum yapılır. Kurulum sırasında “network” ayarlarının yapılandırılması önemlidir.  Bu senaryoda VMWare üzerinden kurulum yapılmıştır. 
 #### 1.1
